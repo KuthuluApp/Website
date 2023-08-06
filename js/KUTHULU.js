@@ -3628,10 +3628,10 @@ async function getCosts(){
             catchError('costForNameChange', err);
         });
 
-    $('#costTier1').innerHTML('a' + costToMintTier1 / ethDec);
-    $('#costTier2').innerHTML(costToMintTier2 / ethDec);
-    $('#costTier3').innerHTML(costToMintTier3 / ethDec);
-    $('#costTier4').innerHTML(costToMintTier4 / ethDec);
+    $('#costTier1').html(costToMintTier1 / ethDec);
+    $('#costTier2').html(costToMintTier2 / ethDec);
+    $('#costTier3').html(costToMintTier3 / ethDec);
+    $('#costTier4').html(costToMintTier4 / ethDec);
 
 
     endLoading();
