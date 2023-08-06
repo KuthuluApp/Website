@@ -2822,7 +2822,7 @@ async function buildAsGroup(){
         }
 
         $('#asGroups').html(groups);
-        
+
     }
 }
 
@@ -3283,8 +3283,7 @@ async function makePost(p, skipRepost, isComment){
                 if (uriToTest.indexOf('?') > 0){
                     uriToTest = uriToTest.substring(0,uriToTest.indexOf('?'));
                 }
-                // Added Tenor.com per Mudbutt (tk 2... 420 style lol)
-                if (uriToTest.split('.').pop().toLowerCase() === validImgExt[z] || uriToTest.indexOf('tenor.com') > 0){
+                if (uriToTest.split('.').pop().toLowerCase() === validImgExt[z]){
                     validImg = true;
                 }
             }
