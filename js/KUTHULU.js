@@ -3585,7 +3585,7 @@ async function getCosts(){
     // get cost to mint
     costToMintTier1 = await contractGroupTokens.methods.costToMintTier(0).call()
         .then(result => {
-            console.log('Cost To Mint Group Tier 1: ' + result + ' DOOM');
+            console.log('Cost To Mint Group Tier 1: ' + result / ethDec + ' MATIC');
             return result;
         })
         .catch(err => {
@@ -3594,7 +3594,7 @@ async function getCosts(){
 
     costToMintTier2 = await contractGroupTokens.methods.costToMintTier(1).call()
         .then(result => {
-            console.log('Cost To Mint Group Tier 2: ' + result + ' DOOM');
+            console.log('Cost To Mint Group Tier 2: ' + result / ethDec + ' MATIC');
             return result;
         })
         .catch(err => {
@@ -3603,7 +3603,7 @@ async function getCosts(){
 
     costToMintTier3 = await contractGroupTokens.methods.costToMintTier(2).call()
         .then(result => {
-            console.log('Cost To Mint Group Tier 3: ' + result + ' DOOM');
+            console.log('Cost To Mint Group Tier 3: ' + result / ethDec + ' MATIC');
             return result;
         })
         .catch(err => {
@@ -3612,7 +3612,7 @@ async function getCosts(){
 
     costToMintTier4 = await contractGroupTokens.methods.costToMintTier(3).call()
         .then(result => {
-            console.log('Cost To Mint Group Tier 4: ' + result + ' DOOM');
+            console.log('Cost To Mint Group Tier 4: ' + result / ethDec + ' MATIC');
             return result;
         })
         .catch(err => {
@@ -3627,6 +3627,12 @@ async function getCosts(){
         .catch(err => {
             catchError('costForNameChange', err);
         });
+
+    $('#costTier1').innerHTML('a' + costToMintTier1 / ethDec);
+    $('#costTier2').innerHTML(costToMintTier2 / ethDec);
+    $('#costTier3').innerHTML(costToMintTier3 / ethDec);
+    $('#costTier4').innerHTML(costToMintTier4 / ethDec);
+
 
     endLoading();
 
