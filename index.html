@@ -505,7 +505,7 @@
         <ul class="sidebar-menu" id="sideLinks">
             <li id="myProfile"></li>
             <li><a href="?badges=1">🏅 View All Badges</a></li>
-            <li><a href="#" onclick="$('#mintGroupLink').hide();$('#mintGroupWrapper').slideDown();$('#groupToMint').focus();">🌌 Mint Your Space</a></li>
+            <li><a href="#lsRet" onclick="$('#mintGroupLink').hide();$('#mintGroupWrapper').slideDown();$('#groupToMint').focus();">🌌 Mint Your Space</a></li>
             <li><a href="https://docs.kuthulu.xyz/">📝 KUTHULU Whitepaper</a></li>
             <li><a href="index.html?group=KUTHULU" style="color:#9621d9;">🤔 HOW DOES THIS WORK?</a></li>
         </ul>
@@ -600,7 +600,7 @@
                                         <div style="color:#000;position:relative;top:-2px;">
 
                                             <div class="dropdown asGroupWrapper dropup">
-                                                <span class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false" id="selectedAsGroup" >
+                                                <span class="dropdown-toggle" href="#lsRet" role="button" data-toggle="dropdown" aria-expanded="false" id="selectedAsGroup" >
 
                                                     <div class="avatar" id="asGroupInitialAvatarWrapper">
                                                         <img src="images/user.png" class="avatarImg menuImage asGroupAvatar" id="asGroupInitialAvatar" />
@@ -679,23 +679,23 @@
 
                                     <div id="tipTokenWrapper">
                                         <div class="dropdown postMenu">
-                                            <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false" style="color:#000;">
+                                            <a class="dropdown-toggle" href="#lsRet" role="button" data-toggle="dropdown" aria-expanded="false" style="color:#000;">
                                                 <img src="images/token-MATIC.png" alt="MATIC" style="width:20px;" id="tokenSelIcon" />
                                             </a>
                                             <div class="dropdown-menu">
-                                                <a href="#" onclick="changeTipType('MATIC')" class="dropdown-item">
+                                                <a href="#lsRet" onclick="changeTipType('MATIC')" class="dropdown-item">
                                                     <img src="images/token-MATIC.png" class="menuImage" /> MATIC
                                                 </a>
-                                                <a href="#" onclick="changeTipType('DOOM')" class="dropdown-item">
+                                                <a href="#lsRet" onclick="changeTipType('DOOM')" class="dropdown-item">
                                                     <img src="images/token-DOOM.png" class="menuImage" /> DOOM
                                                 </a>
-                                                <a href="#" onclick="changeTipType('GBAR')" class="dropdown-item">
+                                                <a href="#lsRet" onclick="changeTipType('GBAR')" class="dropdown-item">
                                                     <img src="images/token-GBAR.png" class="menuImage" /> GBAR
                                                 </a>
-                                                <a href="#" onclick="changeTipType('WETH')" class="dropdown-item">
+                                                <a href="#lsRet" onclick="changeTipType('WETH')" class="dropdown-item">
                                                     <img src="images/token-WETH.png" class="menuImage" /> WETH
                                                 </a>
-                                                <a href="#" onclick="changeTipType('OTHER')" class="dropdown-item">
+                                                <a href="#lsRet" onclick="changeTipType('OTHER')" class="dropdown-item">
                                                     <img src="images/token-OTHER.png" class="menuImage" /> OTHER
                                                 </a>
                                             </div>
@@ -937,7 +937,7 @@
 
         // Validate the address
         if (!validateWalletAddress(tokenContract) && tokenContract !== 'MATIC'){
-            $('#tokenLink').attr('href','#');
+            $('#tokenLink').attr('href','#lsRet');
             $('#tokenContractIcon').show();
             $('#tokenContractIcon').removeClass('fa-check');
             $('#tokenContractIcon').addClass('fa-times bad');
@@ -966,7 +966,7 @@
                 $('#tokenContractStatus').append('<input type="button" class="walletButtonBig gameFont gameButtonBig" onclick="approveCustomContract(\'' + tokenContract + '\')" value="Approve Token Tipping" />');
                 $('#tipsValid').val(0);
             } else if (validTokenContract == -1){
-                $('#tokenLink').attr('href','#');
+                $('#tokenLink').attr('href','#lsRet');
                 $('#tokenContractIcon').show();
                 $('#tokenContractIcon').removeClass('fa-check');
                 $('#tokenContractIcon').addClass('fa-times bad');
@@ -975,7 +975,7 @@
                 $('#tipsValid').val(0);
             } else {
                 $('#tokenContractIcon').show();
-                $('#tokenLink').attr('href','#');
+                $('#tokenLink').attr('href','#lsRet');
                 $('#tokenContractIcon').removeClass('fa-check');
                 $('#tokenContractIcon').addClass('fa-times bad');
 
