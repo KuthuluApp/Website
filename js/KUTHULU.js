@@ -3338,8 +3338,8 @@ async function makePost(p, skipRepost, isComment){
 
         // Show Comments
         if (p.commentLevel === 1) {
-            post += '<a href="#" onclick="toggleComment(' + p.msgID + ', false)"><img src="images/comment.png" class="actionIcon" /></a>';
-            post += '<a href="#" onclick="showComments(' + p.msgID + ')"><span class="actionVal">' + commentIds.length + '</span></a>';
+            post += '<img src="images/comment.png" class="actionIcon" onclick="toggleComment(' + p.msgID + ', false)" />';
+            post += '<span class="actionVal" onclick="showComments(' + p.msgID + ')">' + commentIds.length + '</span>';
         } else {
             post += '<img src="images/comment.png" alt="No Comments Allowed on this Post" class="actionIcon gs" />';
             post += '<span class="actionVal">' + commentIds.length + '</span>';
@@ -3358,20 +3358,20 @@ async function makePost(p, skipRepost, isComment){
                 });
         }
 
-        post += '<a href="#" onclick="like(' + p.msgID + ');">';
+        // post += '<a href="#">';
         if (likedIt) {
-            post += '<img src="images/liked.png" class="actionIcon" />';
+            post += '<img src="images/liked.png" class="actionIcon" onclick="like(' + p.msgID + '); />';
         } else {
-            post += '<img src="images/like.png" class="actionIcon" />';
+            post += '<img src="images/like.png" class="actionIcon" onclick="like(' + p.msgID + '); />';
         }
-        post += '</a>';
+        // post += '</a>';
 
         // Show Likes
         post += '<span class="actionVal"><a href="?likes=' + p.msgID + '">' + p.likes + '</a></span>';
 
 
         // Show Reposts
-        post += '<a href="#" onclick="toggleComment(' + p.msgID + ', true)"><img src="images/repost.png" class="actionIcon" /></a>';
+        post += '<img src="images/repost.png" class="actionIcon" onclick="toggleComment(' + p.msgID + ', true)" />';
         post += '<span class="actionVal"><a href="?repostsOf=' + p.msgID + '">' + p.reposts + '</a></span>';
 
 
@@ -3385,22 +3385,19 @@ async function makePost(p, skipRepost, isComment){
             tipsReceived = Math.round((tipsReceived + Number.EPSILON) * 100) / 100
         }
 
-        post += '<a href="#" onclick="tip(' + p.msgID + ');">';
-
         if (parseFloat(p.tipAmount) > 0){
             if (p.tipContract === contractAddressDOOM){
-                post += '<img src="images/token-DOOM.png" class="actionIcon" style="width:18px;height:18px;" />';
+                post += '<img src="images/token-DOOM.png" class="actionIcon" style="width:18px;height:18px;" onclick="tip(' + p.msgID + ');" />';
             } else if (p.tipContract === '0xb45f6e99bc6e4a8bc431ba86b2e0376271c8545f'){
-                post += '<img src="images/token-GBAR.png" class="actionIcon" style="width:18px;height:18px;" />';
+                post += '<img src="images/token-GBAR.png" class="actionIcon" style="width:18px;height:18px;" onclick="tip(' + p.msgID + ');" />';
             } else if (p.tipContract === '0x7ceb23fd6bc0add59e62ac25578270cff1b9f619'){
-                post += '<img src="images/token-WETH.png" class="actionIcon" style="width:18px;height:18px;" />';
+                post += '<img src="images/token-WETH.png" class="actionIcon" style="width:18px;height:18px;" onclick="tip(' + p.msgID + ');" />';
             } else {
-                post += '<img src="images/coin.png" class="actionIcon" style="width:18px;height:18px;" />';
+                post += '<img src="images/coin.png" class="actionIcon" style="width:18px;height:18px;" onclick="tip(' + p.msgID + ');" />';
             }
         } else {
-            post += '<img src="images/tips.png" class="actionIcon" alt="Tips" />';
+            post += '<img src="images/tips.png" class="actionIcon" alt="Tips" onclick="tip(' + p.msgID + ');" />';
         }
-        post += '</a>';
 
         post += '<span class="actionVal"><a href="?tips=' + p.msgID + '">' + tipsReceived + '</a></span>';
 
