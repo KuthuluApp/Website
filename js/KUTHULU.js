@@ -1987,7 +1987,7 @@ async function makeProfile(userAddress){
     }
 
     post += '<div class="dropdown postMenu">';
-    post += '<a class="dropdown-toggle" href="#lsRet" role="button" data-toggle="dropdown" aria-expanded="false">⠇</a>';
+    post += '<a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">⠇</a>';
     post += '<div class="dropdown-menu">';
 
     let isAllowed = true;
@@ -2089,7 +2089,7 @@ async function makeProfile(userAddress){
                         catchError('checkTips', err);
                     });
                 if (isMember){
-                    post += '<a href="#lsRet" onclick="leaveGroup(\'' + userProfile.groupID + '\')" class="dropdown-item"><img src="images/removeMember.png" class="menuImage" /> Leave Group</a>';
+                    post += '<a href="#" onclick="leaveGroup(\'' + userProfile.groupID + '\')" class="dropdown-item"><img src="images/removeMember.png" class="menuImage" /> Leave Group</a>';
                     post += '<div class="dropdown-divider"></div>';
                 }
             }
@@ -2110,9 +2110,9 @@ async function makeProfile(userAddress){
             }
 
             if (isFollowing) {
-                post += '<a href="#lsRet" onclick="unfollowUser(\'' + userAddress + '\', \'' + accountType + '\')" class="dropdown-item"><img src="images/unfollow.png" class="menuImage" /> Unfollow ' + accountType + '</a>';
+                post += '<a href="#" onclick="unfollowUser(\'' + userAddress + '\', \'' + accountType + '\')" class="dropdown-item"><img src="images/unfollow.png" class="menuImage" /> Unfollow ' + accountType + '</a>';
             } else {
-                post += '<a href="#lsRet" onclick="followUser(\'' + userAddress + '\', \'' + accountType + '\')" class="dropdown-item"><img src="images/follow.png" class="menuImage" /> Follow ' + accountType + '</a>';
+                post += '<a href="#" onclick="followUser(\'' + userAddress + '\', \'' + accountType + '\')" class="dropdown-item"><img src="images/follow.png" class="menuImage" /> Follow ' + accountType + '</a>';
             }
 
             // Check if they are blocking this user (requester / target)
@@ -2127,9 +2127,9 @@ async function makeProfile(userAddress){
                 });
 
             if (isAllowed) {
-                post += '<a href="#lsRet" onclick="toggleBlock(\'' + userAddress + '\', ' + userProfile.groupID + ')" class="dropdown-item"><img src="images/block.png" class="menuImage" /> Block ' + accountType + '</a>';
+                post += '<a href="#" onclick="toggleBlock(\'' + userAddress + '\', ' + userProfile.groupID + ')" class="dropdown-item"><img src="images/block.png" class="menuImage" /> Block ' + accountType + '</a>';
             } else {
-                post += '<a href="#lsRet" onclick="toggleBlock(\'' + userAddress + '\', ' + userProfile.groupID + ')" class="dropdown-item"><img src="images/unblock.png" class="menuImage" /> Unblock ' + accountType + '</a>';
+                post += '<a href="#" onclick="toggleBlock(\'' + userAddress + '\', ' + userProfile.groupID + ')" class="dropdown-item"><img src="images/unblock.png" class="menuImage" /> Unblock ' + accountType + '</a>';
             }
 
             if (walletAddress.toLowerCase() === multiSigAddress.toLowerCase()) {
@@ -2206,7 +2206,7 @@ async function makeProfile(userAddress){
     }
 
     if (walletAddress.toLowerCase() === userAddress.toLowerCase()){
-        post += '<a href="#lsRet" onclick="resetEdits();$(\'#editName\').show();"><img src="images/pencil.png" style="margin-left:10px;height:16px;position: relative;top:-3px;" /></a>'
+        post += '<a href="#" onclick="resetEdits();$(\'#editName\').show();"><img src="images/pencil.png" style="margin-left:10px;height:16px;position: relative;top:-3px;" /></a>'
     }
 
     if (userProfile.groupID > 0) {
@@ -2414,7 +2414,7 @@ async function makeProfile(userAddress){
         post += '<input type="hidden" id="groupID" name="groupID" value="' + userProfile.groupID + '" />';
 
         post += '<div id="editProfileWrapper" style="display:none;margin-top:20px;" class="messageWrapper">';
-        post += '<div class="datePosted"><a href="#lsRet" onclick="$(\'#editProfileWrapper\').hide();"><i class="fas fa-times good"></i></a></div>'
+        post += '<div class="datePosted"><a href="#" onclick="$(\'#editProfileWrapper\').hide();"><i class="fas fa-times good"></i></a></div>'
         post += '<h1 class="gameFont text-white">Edit your profile details</h1>';
         post += '<div class="eP">These will all update at once, so make sure you\'re filling them all in.</div>';
         post += '<div class="eP">Location: <input type="text" name="location" id="location" /></div>';
@@ -2432,7 +2432,7 @@ async function makeProfile(userAddress){
         post += '</div>';
 
         post += '<div id="nftWhitelisting" style="display:none;margin-top:20px;" class="messageWrapper">';
-        post += '<div class="datePosted"><a href="#lsRet" onclick="$(\'#nftWhitelisting\').hide();"><i class="fas fa-times good"></i></a></div>'
+        post += '<div class="datePosted"><a href="#" onclick="$(\'#nftWhitelisting\').hide();"><i class="fas fa-times good"></i></a></div>'
         post += '<h1 class="gameFont text-white">NFT must be on Polygon</h1>';
         post += '<div class="eP">NFT Contract: <input type="text" name="tokenContract" id="nftTokenContract" /></div>';
         post += '<div class="eP">Minimum Amount Owned: <input type="text" name="minTokens" id="minTokens" /> (<a href="#" onclick="$(\'#minTokens\').val(parseFloat($(\'#minTokens\').val()) * ethDec)">to wei</a>)</div>';
@@ -2440,7 +2440,7 @@ async function makeProfile(userAddress){
         post += '</div>';
 
         post += '<div id="contractHook" style="display:none;margin-top:20px;" class="messageWrapper">';
-        post += '<div class="datePosted"><a href="#lsRet" onclick="$(\'#contractHook\').hide();"><i class="fas fa-times good"></i></a></div>'
+        post += '<div class="datePosted"><a href="#" onclick="$(\'#contractHook\').hide();"><i class="fas fa-times good"></i></a></div>'
         post += '<h1 class="gameFont text-white">ADVANCED USERS ONLY!</h1>';
         post += '<div class="eP">If you don\'t know EXACTLY what this is and EXACTLY how it works, don\'t touch =)</div>';
         post += '<div class="eP">Contract Address : <input type="text" name="contractHookAddress" id="contractHookAddress" placeholder="0x58760414d8e24d21582c2d39e8169421f6b4e6a4"  class="purpleBox" style="width:320px;font-size:12px;" /></div>';
@@ -3077,7 +3077,7 @@ async function makePost(p, skipRepost, isComment){
 
     if (!skipRepost) {
         post += '<div class="dropdown postMenu">';
-        post += '<a class="dropdown-toggle" href="#lsRet" role="button" data-toggle="dropdown" aria-expanded="false">⠇</a>';
+        post += '<a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">⠇</a>';
         post += '<div class="dropdown-menu">';
 
         if (validWalletConnection) {
@@ -3098,9 +3098,9 @@ async function makePost(p, skipRepost, isComment){
                 }
 
                 if (isFollowing) {
-                    post += '<a href="#lsRet" onclick="unfollowUser(\'' + p.postedBy + '\', \'' + accountType + '\')" class="dropdown-item"><img src="images/unfollow.png" class="menuImage" /> Unfollow ' + accountType + '</a>';
+                    post += '<a href="#" onclick="unfollowUser(\'' + p.postedBy + '\', \'' + accountType + '\')" class="dropdown-item"><img src="images/unfollow.png" class="menuImage" /> Unfollow ' + accountType + '</a>';
                 } else {
-                    post += '<a href="#lsRet" onclick="followUser(\'' + p.postedBy + '\', \'' + accountType + '\')" class="dropdown-item"><img src="images/follow.png" class="menuImage" /> Follow ' + accountType + '</a>';
+                    post += '<a href="#" onclick="followUser(\'' + p.postedBy + '\', \'' + accountType + '\')" class="dropdown-item"><img src="images/follow.png" class="menuImage" /> Follow ' + accountType + '</a>';
                 }
 
             } else {
@@ -3338,8 +3338,8 @@ async function makePost(p, skipRepost, isComment){
 
         // Show Comments
         if (p.commentLevel === 1) {
-            post += '<a href="#lsRet" onclick="toggleComment(' + p.msgID + ', false)"><img src="images/comment.png" class="actionIcon" /></a>';
-            post += '<a href="#lsRet" onclick="showComments(' + p.msgID + ')"><span class="actionVal">' + commentIds.length + '</span></a>';
+            post += '<a href="#" onclick="toggleComment(' + p.msgID + ', false)"><img src="images/comment.png" class="actionIcon" /></a>';
+            post += '<a href="#" onclick="showComments(' + p.msgID + ')"><span class="actionVal">' + commentIds.length + '</span></a>';
         } else {
             post += '<img src="images/comment.png" alt="No Comments Allowed on this Post" class="actionIcon gs" />';
             post += '<span class="actionVal">' + commentIds.length + '</span>';
@@ -3358,7 +3358,7 @@ async function makePost(p, skipRepost, isComment){
                 });
         }
 
-        post += '<a href="#lsRet" onclick="like(' + p.msgID + ');">';
+        post += '<a href="#" onclick="like(' + p.msgID + ');">';
         if (likedIt) {
             post += '<img src="images/liked.png" class="actionIcon" />';
         } else {
@@ -3371,7 +3371,7 @@ async function makePost(p, skipRepost, isComment){
 
 
         // Show Reposts
-        post += '<a href="#lsRet" onclick="toggleComment(' + p.msgID + ', true)"><img src="images/repost.png" class="actionIcon" /></a>';
+        post += '<a href="#" onclick="toggleComment(' + p.msgID + ', true)"><img src="images/repost.png" class="actionIcon" /></a>';
         post += '<span class="actionVal"><a href="?repostsOf=' + p.msgID + '">' + p.reposts + '</a></span>';
 
 
@@ -3385,7 +3385,7 @@ async function makePost(p, skipRepost, isComment){
             tipsReceived = Math.round((tipsReceived + Number.EPSILON) * 100) / 100
         }
 
-        post += '<a href="#lsRet" onclick="tip(' + p.msgID + ');">';
+        post += '<a href="#" onclick="tip(' + p.msgID + ');">';
 
         if (parseFloat(p.tipAmount) > 0){
             if (p.tipContract === contractAddressDOOM){
