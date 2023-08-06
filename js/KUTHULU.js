@@ -2822,7 +2822,7 @@ async function buildAsGroup(){
         }
 
         $('#asGroups').html(groups);
-        
+
     }
 }
 
