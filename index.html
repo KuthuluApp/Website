@@ -504,8 +504,8 @@
         </a>
         <ul class="sidebar-menu" id="sideLinks">
             <li id="myProfile"></li>
-            <li><a href="?badges=1">🏅 View All Badges</a></li>
-            <li><a href="#lsRet" onclick="$('#mintGroupLink').hide();$('#mintGroupWrapper').slideDown();$('#groupToMint').focus();">🌌 Mint Your Space</a></li>
+            <li><a href="/?badges=1">🏅 View All Badges</a></li>
+            <li><a href="#" onclick="$('#mintGroupLink').hide();$('#mintGroupWrapper').slideDown();$('#groupToMint').focus();">🌌 Mint Your Space</a></li>
             <li><a href="https://docs.kuthulu.xyz/">📝 KUTHULU Whitepaper</a></li>
             <li><a href="index.html?group=KUTHULU" style="color:#9621d9;">🤔 HOW DOES THIS WORK?</a></li>
         </ul>
@@ -515,8 +515,8 @@
             <div class="social-icon mrg-top-15 text-center">
                 <a href="https://www.Twitter.com/KUTHULUapp" target="_blank" class="btn btn-icon twitter border no-border circle text-dark"><i class="ti-twitter"></i></a>
                 <a href="https://www.youtube.com/channel/UCtLfIdOKt6Ep0EB3gHpOI6Q" target="_blank" class="btn btn-icon youtube border no-border circle text-dark"><i class="ti-youtube"></i></a>
-                <a href="https://discord.gg/atfGXANP" target="_blank" class="btn btn-icon instagram border no-border circle text-dark"><img src="images/discord.png" style="width:20px;" alt="discord "/></a>
-                <a href="https://opensea.io/collection/sgmarinesandaliens" target="_blank" class="btn btn-icon opensea border no-border circle text-dark"><img src="images/opensea.png" style="width:20px;" alt="opensea "/></a>
+                <a href="https://discord.gg/nftarcade" target="_blank" class="btn btn-icon instagram border no-border circle text-dark"><img src="images/discord.png" style="width:20px;" alt="discord "/></a>
+                <a href="https://opensea.io/collection/kuthulu-spaces" target="_blank" class="btn btn-icon opensea border no-border circle text-dark"><img src="images/opensea.png" style="width:20px;" alt="opensea "/></a>
             </div>
             <!-- /social-icon -->
             <div style="text-align: center; position: relative;width: 100%;">
@@ -600,7 +600,7 @@
                                         <div style="color:#000;position:relative;top:-2px;">
 
                                             <div class="dropdown asGroupWrapper dropup">
-                                                <span class="dropdown-toggle" href="#lsRet" role="button" data-toggle="dropdown" aria-expanded="false" id="selectedAsGroup" >
+                                                <span class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false" id="selectedAsGroup" >
 
                                                     <div class="avatar" id="asGroupInitialAvatarWrapper">
                                                         <img src="images/user.png" class="avatarImg menuImage asGroupAvatar" id="asGroupInitialAvatar" />
@@ -679,23 +679,23 @@
 
                                     <div id="tipTokenWrapper">
                                         <div class="dropdown postMenu">
-                                            <a class="dropdown-toggle" href="#lsRet" role="button" data-toggle="dropdown" aria-expanded="false" style="color:#000;">
+                                            <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false" style="color:#000;">
                                                 <img src="images/token-MATIC.png" alt="MATIC" style="width:20px;" id="tokenSelIcon" />
                                             </a>
                                             <div class="dropdown-menu">
-                                                <a href="#lsRet" onclick="changeTipType('MATIC')" class="dropdown-item">
+                                                <a href="#" onclick="changeTipType('MATIC')" class="dropdown-item">
                                                     <img src="images/token-MATIC.png" class="menuImage" /> MATIC
                                                 </a>
-                                                <a href="#lsRet" onclick="changeTipType('DOOM')" class="dropdown-item">
+                                                <a href="#" onclick="changeTipType('DOOM')" class="dropdown-item">
                                                     <img src="images/token-DOOM.png" class="menuImage" /> DOOM
                                                 </a>
-                                                <a href="#lsRet" onclick="changeTipType('GBAR')" class="dropdown-item">
+                                                <a href="#" onclick="changeTipType('GBAR')" class="dropdown-item">
                                                     <img src="images/token-GBAR.png" class="menuImage" /> GBAR
                                                 </a>
-                                                <a href="#lsRet" onclick="changeTipType('WETH')" class="dropdown-item">
+                                                <a href="#" onclick="changeTipType('WETH')" class="dropdown-item">
                                                     <img src="images/token-WETH.png" class="menuImage" /> WETH
                                                 </a>
-                                                <a href="#lsRet" onclick="changeTipType('OTHER')" class="dropdown-item">
+                                                <a href="#" onclick="changeTipType('OTHER')" class="dropdown-item">
                                                     <img src="images/token-OTHER.png" class="menuImage" /> OTHER
                                                 </a>
                                             </div>
@@ -753,7 +753,7 @@
                         <div class="row justify-content-center" id="msgs"></div>
                         <div id="feedType">
                             <a href="./"><button name="allPostsBtn" class="btn btn-light typeButton">RECENT</button></a>
-                            <a href="?onlyFollowing=1"><button name="feedBtn" class="btn btn-light typeButton">FOLLOWING</button></a>
+                            <a href="/?onlyFollowing=1"><button name="feedBtn" class="btn btn-light typeButton">FOLLOWING</button></a>
                         </div>
                     </div>
                     <!-- /Entrants -->
@@ -937,7 +937,7 @@
 
         // Validate the address
         if (!validateWalletAddress(tokenContract) && tokenContract !== 'MATIC'){
-            $('#tokenLink').attr('href','#lsRet');
+            $('#tokenLink').attr('href','#');
             $('#tokenContractIcon').show();
             $('#tokenContractIcon').removeClass('fa-check');
             $('#tokenContractIcon').addClass('fa-times bad');
@@ -966,7 +966,7 @@
                 $('#tokenContractStatus').append('<input type="button" class="walletButtonBig gameFont gameButtonBig" onclick="approveCustomContract(\'' + tokenContract + '\')" value="Approve Token Tipping" />');
                 $('#tipsValid').val(0);
             } else if (validTokenContract == -1){
-                $('#tokenLink').attr('href','#lsRet');
+                $('#tokenLink').attr('href','#');
                 $('#tokenContractIcon').show();
                 $('#tokenContractIcon').removeClass('fa-check');
                 $('#tokenContractIcon').addClass('fa-times bad');
@@ -975,7 +975,7 @@
                 $('#tipsValid').val(0);
             } else {
                 $('#tokenContractIcon').show();
-                $('#tokenLink').attr('href','#lsRet');
+                $('#tokenLink').attr('href','#');
                 $('#tokenContractIcon').removeClass('fa-check');
                 $('#tokenContractIcon').addClass('fa-times bad');
 

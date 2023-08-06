@@ -196,7 +196,7 @@ async function start() {
 
     if (validWalletConnection) {
 
-        $('#myProfile').html('<a class="scroll-to" href="?address=' + walletAddress + '">My Profile</a>');
+        $('#myProfile').html('<a class="scroll-to" href="/?address=' + walletAddress + '">My Profile</a>');
 
         tipsToClaim = await contractTips.methods.checkTips(walletAddress).call()
             .then(result => {
@@ -1312,10 +1312,10 @@ async function getPosts() {
         $('#profileWrapper').append(profile);
 
         // Post buttons
-        let postTypesButtons = '<br><a href="?address=' + qsAddress + '"><button name="postsBtn" class="btn btn-light typeButton">POSTS</button></a>';
-        postTypesButtons += '<a href="?address=' + qsAddress + '&comments=1"><button name="commentsBtn" class="btn btn-light typeButton">COMMENTS</button></a>';
-        postTypesButtons += '<a href="?address=' + qsAddress + '&reposts=1"><button name="repostsBtn" class="btn btn-light typeButton">REPOSTS</button></a>';
-        postTypesButtons += '<a href="?address=' + qsAddress + '&tagged=1"><button name="taggedBtn" class="btn btn-light typeButton">TAGGED</button></a>';
+        let postTypesButtons = '<br><a href="/?address=' + qsAddress + '"><button name="postsBtn" class="btn btn-light typeButton">POSTS</button></a>';
+        postTypesButtons += '<a href="/?address=' + qsAddress + '&comments=1"><button name="commentsBtn" class="btn btn-light typeButton">COMMENTS</button></a>';
+        postTypesButtons += '<a href="/?address=' + qsAddress + '&reposts=1"><button name="repostsBtn" class="btn btn-light typeButton">REPOSTS</button></a>';
+        postTypesButtons += '<a href="/?address=' + qsAddress + '&tagged=1"><button name="taggedBtn" class="btn btn-light typeButton">TAGGED</button></a>';
 
         $('#profileWrapper').append(postTypesButtons);
 
@@ -1800,7 +1800,7 @@ async function makeUserListing(posterAddress){
     post += '</div>';
 
     // Username
-    post += '<div class="nameWrapper"><a href="?address=' + posterAddress + '" class="name">';
+    post += '<div class="nameWrapper"><a href="/?address=' + posterAddress + '" class="name">';
 
     if (userProfile.groupID > 0){
         post += '%' + userProfile.handle.toUpperCase();
@@ -2158,7 +2158,7 @@ async function makeProfile(userAddress){
                 post += '<a href="#" onclick="toggleWhitelist(0);" class="dropdown-item"><img src="images/whitelist.png" class="menuImage" /> Use Whitelist</a>';
             }
         }
-        post += '<a href="?badges=' + userAddress + '" class="dropdown-item"><img src="images/badges.png" class="menuImage" /> Badges</a>';
+        post += '<a href="/?badges=' + userAddress + '" class="dropdown-item"><img src="images/badges.png" class="menuImage" /> Badges</a>';
     }
 
     post += '</div>';
@@ -2219,7 +2219,7 @@ async function makeProfile(userAddress){
             .catch(err => {
                 catchError('groupDetails', err);
             });
-        post += '<span class="profileDetail muted" style="margin-left:10px;">( <a href="?admins=' + userProfile.groupID + '">' + groupMembers.length + '</a> Members )</span>';
+        post += '<span class="profileDetail muted" style="margin-left:10px;">( <a href="/?admins=' + userProfile.groupID + '">' + groupMembers.length + '</a> Members )</span>';
     }
 
     post += '<div class="muted">' + userAddress + '</div>';
@@ -2231,9 +2231,9 @@ async function makeProfile(userAddress){
 
     // Follower and Tips Counts
     post += '<div class="followerWrapper">';
-    post += '<div class="profileDetail float-left" style="margin-right:20px;"><a href="?address=' + userAddress + '">' + userProfile.postCount + '</a> <span class="muted">Posts</span></div>';
-    post += '<div class="profileDetail float-left" style="margin-right:20px;"><a href="?following=1&address=' + userAddress + '">' + userProfile.following + '</a> <span class="muted">Following</span></div>';
-    post += '<div class="profileDetail float-left" style="margin-right:20px;"><a href="?followers=1&address=' + userAddress + '">' + userProfile.followers + '</a> <span class="muted">Followers</span></div>';
+    post += '<div class="profileDetail float-left" style="margin-right:20px;"><a href="/?address=' + userAddress + '">' + userProfile.postCount + '</a> <span class="muted">Posts</span></div>';
+    post += '<div class="profileDetail float-left" style="margin-right:20px;"><a href="/?following=1&address=' + userAddress + '">' + userProfile.following + '</a> <span class="muted">Following</span></div>';
+    post += '<div class="profileDetail float-left" style="margin-right:20px;"><a href="/?followers=1&address=' + userAddress + '">' + userProfile.followers + '</a> <span class="muted">Followers</span></div>';
 
     let tipsReceived = 0;
     if (userProfile.tipsReceived > 0){
@@ -2246,8 +2246,8 @@ async function makeProfile(userAddress){
         tipsSent = Math.round((tipsSent + Number.EPSILON) * 100) / 100
     }
 
-    post += '<div class="profileDetail float-left" style="margin-right:20px;"><img src="images/tips.png" style="height: 14px;margin-right:5px;position: relative;top:-1px;" /><a href="?tipsSent=1&address=' + userAddress + '">' + tipsSent + '</a> <span class="muted" style="margin-left:3px;">Tips ↑</span></div>';
-    post += '<div class="profileDetail float-left" style="margin-right:20px;"><img src="images/tips.png" style="height: 14px;margin-right:5px;position: relative;top:-1px;" /><a href="?tipsReceived=1&address=' + userAddress + '">' + tipsReceived + '</a> <span class="muted" style="margin-left:3px;">Tips ↓</span></div>';
+    post += '<div class="profileDetail float-left" style="margin-right:20px;"><img src="images/tips.png" style="height: 14px;margin-right:5px;position: relative;top:-1px;" /><a href="/?tipsSent=1&address=' + userAddress + '">' + tipsSent + '</a> <span class="muted" style="margin-left:3px;">Tips ↑</span></div>';
+    post += '<div class="profileDetail float-left" style="margin-right:20px;"><img src="images/tips.png" style="height: 14px;margin-right:5px;position: relative;top:-1px;" /><a href="/?tipsReceived=1&address=' + userAddress + '">' + tipsReceived + '</a> <span class="muted" style="margin-left:3px;">Tips ↓</span></div>';
 
     post += '<div class="clearfix"></div>';
     post += '</div>';
@@ -2297,7 +2297,7 @@ async function makeProfile(userAddress){
             });
 
         post += '<div class="profileDetail" style="margin-top:10px;"><i class="fa fa-crown" style="margin-right:5px;color:gold;"></i> Group Owner: &nbsp;';
-        post += '<a href="?address=' + groupOwnerAddress + '">' + groupOwnerAddress + "</a>";
+        post += '<a href="/?address=' + groupOwnerAddress + '">' + groupOwnerAddress + "</a>";
         post += '</div>';
     }
 
@@ -2308,7 +2308,7 @@ async function makeProfile(userAddress){
         if (g > 0) {
             groupsNamesOwned += ', ';
         }
-        groupsNamesOwned += '<a href="?address=' + allGroupDetails[g].groupAddress + '">%' + allGroupDetails[g].groupName.toUpperCase() + '</a>';
+        groupsNamesOwned += '<a href="/?address=' + allGroupDetails[g].groupAddress + '">%' + allGroupDetails[g].groupName.toUpperCase() + '</a>';
     }
 
     if (groupsNamesOwned !== ''){
@@ -3115,7 +3115,7 @@ async function makePost(p, skipRepost, isComment){
     let datePosted = new Date(p.timestamp * 1000);
     post += '<div class="datePosted muted">' + datePosted.toDateString() + '</div>';
 
-    post += '<div class="nameWrapper"><a href="?address=' + p.postedBy + '" class="name" id="' + p.msgID + '-name">';
+    post += '<div class="nameWrapper"><a href="/?address=' + p.postedBy + '" class="name" id="' + p.msgID + '-name">';
     let shortAddr = makeShortAddress(p.postedBy);
     if (p.handle.length > 0){
         if (isGroup){
@@ -3182,7 +3182,7 @@ async function makePost(p, skipRepost, isComment){
                     post += ', ';
                 }
 
-                post += '<a href="?groupID=' + inGroups[g] + '" class="groupName">%' + groupDetails.groupName.toUpperCase() + "</a>";
+                post += '<a href="/?groupID=' + inGroups[g] + '" class="groupName">%' + groupDetails.groupName.toUpperCase() + "</a>";
             }
         }
         post += '</span>';
@@ -3199,7 +3199,7 @@ async function makePost(p, skipRepost, isComment){
             if (groups) {
                 if (g + 1 <= groups.length) {
                     let re = new RegExp(groups[g],"gi");
-                    p.message = p.message.replace(re, '<a href="?address=' + groupAddresses[g] + '">' + groups[g] + '</a>');
+                    p.message = p.message.replace(re, '<a href="/?address=' + groupAddresses[g] + '">' + groups[g] + '</a>');
                 }
             }
         }
@@ -3212,7 +3212,7 @@ async function makePost(p, skipRepost, isComment){
         for (let g = 0; g < Hashtags.length; g++) {
             if (hashtags) {
                 if (g + 1 <= hashtags.length) {
-                    p.message = p.message.replace(hashtags[g], '<a href="?hashtag=' + Hashtags[g] + '">' + hashtags[g] + '</a>');
+                    p.message = p.message.replace(hashtags[g], '<a href="/?hashtag=' + Hashtags[g] + '">' + hashtags[g] + '</a>');
                 }
             }
         }
@@ -3229,7 +3229,7 @@ async function makePost(p, skipRepost, isComment){
                 if (t + 1 <= taggedAddress.length) {
                     let re = new RegExp('@' + taggedAddress[t],"gi");
                     let handle = await getHandle(taggedAddress[t], true);
-                    p.message = p.message.replace(re, '<a href="?address=' + taggedAddress[t] + '&tagged=1" title="' + taggedAddress[t] + '">@' + handle + '</a>');
+                    p.message = p.message.replace(re, '<a href="/?address=' + taggedAddress[t] + '&tagged=1" title="' + taggedAddress[t] + '">@' + handle + '</a>');
                 }
             }
         }
@@ -3261,7 +3261,7 @@ async function makePost(p, skipRepost, isComment){
                     taggedUsers += '<img src="images/coin.png" style="position:absolute;right:-5px;top:0;width:16px;height:16px;" />';
                 }
             }
-            taggedUsers += '<a href="?address=' + tagged[t] + '&tagged=1"><img src="images/taggedUser.png" style="width:30px;"  alt="' + tagged[t] + '"></a></div>';
+            taggedUsers += '<a href="/?address=' + tagged[t] + '&tagged=1"><img src="images/taggedUser.png" style="width:30px;"  alt="' + tagged[t] + '"></a></div>';
         }
     }
 
@@ -3368,12 +3368,12 @@ async function makePost(p, skipRepost, isComment){
         post += '</a>';
 
         // Show Likes
-        post += '<span class="actionVal"><a href="?likes=' + p.msgID + '">' + p.likes + '</a></span>';
+        post += '<span class="actionVal"><a href="/?likes=' + p.msgID + '">' + p.likes + '</a></span>';
 
 
         // Show Reposts
         post += '<a href="#" onclick="toggleComment(' + p.msgID + ', true)"><img src="images/repost.png" class="actionIcon" /></a>';
-        post += '<span class="actionVal"><a href="?repostsOf=' + p.msgID + '">' + p.reposts + '</a></span>';
+        post += '<span class="actionVal"><a href="/?repostsOf=' + p.msgID + '">' + p.reposts + '</a></span>';
 
 
         // Show Tips
@@ -3403,10 +3403,10 @@ async function makePost(p, skipRepost, isComment){
         }
         post += '</a>';
 
-        post += '<span class="actionVal"><a href="?tips=' + p.msgID + '">' + tipsReceived + '</a></span>';
+        post += '<span class="actionVal"><a href="/?tips=' + p.msgID + '">' + tipsReceived + '</a></span>';
 
         // Show Share Button
-        post += '<a href="?msg=' + p.msgID + '"><img src="images/share.png" style="height:18px;" class="actionIcon" alt="share" /></a>';
+        post += '<a href="/?msg=' + p.msgID + '"><img src="images/share.png" style="height:18px;" class="actionIcon" alt="share" /></a>';
 
         // Tagged Accounts
         post += taggedUsers;
