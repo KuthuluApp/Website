@@ -917,7 +917,7 @@ async function approveCustomContract(tokenContractAddress){
         startLoading('Setting Allowance...');
 
         let contractCustomTokensPub = new web3.eth.Contract(abiDOOM, tokenContractAddress);
-        let resp = await contractCustomTokensPub.methods.approve(contractAddress, bntokens).send({from: walletAddress})
+        let resp = await contractCustomTokensPub.methods.approve(contractAddressTips, bntokens).send({from: walletAddress})
             .then(result => {
 
                 endLoading();
@@ -3768,7 +3768,7 @@ async function validateERC20Contract(tokenContract, amount){
     console.log('Custom Token Balance: ', parseFloat(tokenBalance));
 
     // Check Custom Token Allowance
-    let allowance = await contractCustomToken.methods.allowance(walletAddress, contractAddress).call()
+    let allowance = await contractCustomToken.methods.allowance(walletAddress, contractAddressTips).call()
         .then(result => {
             console.log('Allowance:' + result);
             if (result > 0) {
