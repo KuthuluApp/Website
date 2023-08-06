@@ -3358,7 +3358,7 @@ async function makePost(p, skipRepost, isComment){
                 });
         }
 
-        
+
         post += '<a href="#" onclick="like(' + p.msgID + ');">';
         if (likedIt) {
             post += '<img src="images/liked.png" class="actionIcon" />';
@@ -3413,8 +3413,17 @@ async function makePost(p, skipRepost, isComment){
 
         post += '</div>';
 
-        post += '<div class="d-block d-sm-none">';
+
+        post += '<div class="d-block d-sm-none pull-left margin-right:15px;">';
+        post += '<button onclick="toggleComment(' + p.msgID + ', false)">Comment</button>';
+        post += '</div>';
+
+        post += '<div class="d-block d-sm-none pull-left margin-right:15px;">';
         post += '<button onclick="like(' + p.msgID + ');">Like</button>';
+        post += '</div>';
+
+        post += '<div class="d-block d-sm-none pull-left margin-right:15px;">';
+        post += '<button onclick="toggleComment(' + p.msgID + ', true)">Repost</button>';
         post += '</div>';
     }
 
