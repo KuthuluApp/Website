@@ -722,18 +722,18 @@ async function mintGroup(){
 
     // Check to make sure they have enough DOOM to mint the group
     if (userDOOMBalance < costToMint) {
-        $('#statusMsg').html('<span class="gameFont errorText">You need <img src="images/token-DOOM.png" class="alertDOOM" />' + costToMint / ethDec + ' DOOM to mint this group</span>');
+        $('#statusMsg').html('<span class="gameFont errorText">You need <img src="images/token-DOOM.png" class="alertDOOM" />' + costToMint / ethDec + ' DOOM to mint this Space</span>');
         return;
     }
 
-    startLoading('Minting Group...');
+    startLoading('Minting Space...');
 
     if (!groupToMint || groupToMint === '' || groupToMint === null){
-        $('#statusMsg').html('<span class="gameFont" style="color: red;text-shadow: none;">You need to pick a group name first.</span>');
+        $('#statusMsg').html('<span class="gameFont" style="color: red;text-shadow: none;">You need to pick a Space name first.</span>');
         endLoading();
         return;
     } else if (groupToMint.length < 3 || groupToMint.length > 100){
-        $('#statusMsg').html('<span class="gameFont" style="color: red;text-shadow: none;">Group names must be between 3 and 100 characters long.</span>');
+        $('#statusMsg').html('<span class="gameFont" style="color: red;text-shadow: none;">Space names must be between 3 and 100 characters long.</span>');
         endLoading();
         return;
     }
@@ -751,22 +751,22 @@ async function mintGroup(){
 
     // If the group is not owned by 0x0, then it's owned
     if (!isGroupAvailable){
-        $('#statusMsg').html('<span class="gameFont" style="color: red;text-shadow: none;">That group is owned already</span>');
+        $('#statusMsg').html('<span class="gameFont" style="color: red;text-shadow: none;">That Space is owned already</span>');
         endLoading();
         return;
     }
 
-    if (userMATICBalance < costToMint){
-        $('#statusMsg').html('<span class="gameFont" style="color: red;text-shadow: none;">You need ' + (parseFloat(costToMint) / ethDec) + ' MATIC to mint that group name</span>');
+    if (parseInt(userMATICBalance / ethDec) < parseInt(costToMint / ethDec)){
+        $('#statusMsg').html('<span class="gameFont" style="color: red;text-shadow: none;">You need ' + (parseFloat(costToMint) / ethDec) + ' MATIC to mint that Space</span>');
         endLoading();
         return;
     }
 
-    let resp = await contractGroupTokensPub.methods.mintGroup(groupToMint).send({from: walletAddress})
+    let resp = await contractGroupTokensPub.methods.mintGroup(groupToMint).send({from: walletAddress, value: costToMint})
         .then(async (result) => {
             console.log('Post Results: ', result);
 
-            $('#statusMsg').html('<span class="gameFont errorText">You now own the group "' + groupToMint + '"</span>');
+            $('#statusMsg').html('<span class="gameFont errorText">You now own the Space "' + groupToMint + '"</span>');
 
             return result;
         })
