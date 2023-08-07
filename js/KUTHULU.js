@@ -3511,7 +3511,7 @@ async function getProfileImageFromNFT(avatarMetadata, avatarContract, usrAddress
                         // if (groupName > 0){
                             newImg += '  data-title="' + groupName + '"';
                         // }
-                        // newImg += ' data-footer="' + avatarContract + '"';
+                        newImg += ' data-footer="' + avatarContract + '"';
                         newImg += '>';
                         newImg += '<img src="' + nftImg + '" class="avatarImg';
                         if (groupID > 0){
