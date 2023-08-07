@@ -3389,7 +3389,7 @@ async function makePost(p, skipRepost, isComment){
         post += '<a href="#" onclick="tip(' + p.msgID + ');">';
 
         if (parseFloat(p.tipAmount) > 0){
-            if (p.tipContract === contractAddressDOOM){
+            if (p.tipContract.toLowerCase() === contractAddressDOOM.toLowerCase()){
                 post += '<img src="images/token-DOOM.png" class="actionIcon" style="width:18px;height:18px;" />';
             } else if (p.tipContract === '0xb45f6e99bc6e4a8bc431ba86b2e0376271c8545f'){
                 post += '<img src="images/token-GBAR.png" class="actionIcon" style="width:18px;height:18px;" />';
