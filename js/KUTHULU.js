@@ -3296,7 +3296,11 @@ async function makePost(p, skipRepost, isComment){
                 // check if it's a YouTube video
                 console.log(p.uri);
                 if (p.uri.toLowerCase().indexOf('https://youtube.com/') >= 0 || p.uri.toLowerCase().indexOf('https://www.youtube.com/') >= 0) {
-                    post += '<iframe width="425" height="272" src="https://www.youtube.com/embed/' + p.uri.split('v=')[1] + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+                    let vidCode = p.uri.split('v=')[1];
+                    if (p.uri.split('v=')[1].indexOf('&') > 0){
+                        vidCode = p.uri.split('v=')[1].split('&')[0];
+                    }
+                    post += '<iframe width="425" height="272" src="https://www.youtube.com/embed/' + vidCode + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
                 } else if (p.uri.toLowerCase().indexOf('https://youtu.be/') >= 0) {
                     post += '<iframe width="425" height="272" src="https://www.youtube.com/embed/' + p.uri.split('.be/')[1] + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
                 } else {
@@ -3391,9 +3395,9 @@ async function makePost(p, skipRepost, isComment){
         if (parseFloat(p.tipAmount) > 0){
             if (p.tipContract.toLowerCase() === contractAddressDOOM.toLowerCase()){
                 post += '<img src="images/token-DOOM.png" class="actionIcon" style="width:18px;height:18px;" />';
-            } else if (p.tipContract === '0xb45f6e99bc6e4a8bc431ba86b2e0376271c8545f'){
+            } else if (p.tipContract.toLowerCase() === '0xb45f6e99bc6e4a8bc431ba86b2e0376271c8545f'){
                 post += '<img src="images/token-GBAR.png" class="actionIcon" style="width:18px;height:18px;" />';
-            } else if (p.tipContract === '0x7ceb23fd6bc0add59e62ac25578270cff1b9f619'){
+            } else if (p.tipContract.toLowerCase() === '0x7ceb23fd6bc0add59e62ac25578270cff1b9f619'){
                 post += '<img src="images/token-WETH.png" class="actionIcon" style="width:18px;height:18px;" />';
             } else {
                 post += '<img src="images/coin.png" class="actionIcon" style="width:18px;height:18px;" />';
