@@ -148,6 +148,7 @@ let postToEarnCap = 0;
 
 let allMessagesPos = 0;
 let lastMessagePos = 0;
+let isGroupSelected = false;
 
 const validImgExt = ['gif','jpg','jpeg','png','webp','svg'];
 let lastInfoPostID = 46
@@ -2828,6 +2829,11 @@ async function buildAsGroup(){
 
 
 function changeAsGroup(profileImage, groupName, groupID){
+    if (groupID.toString().length > 1) {
+        isGroupSelected = true;
+    } else {
+        isGroupSelected = false;
+    }
     $('#asGroupInitialAvatar').attr('src', profileImage);
     $('#asGroupInitialUsername').html(groupName);
     $('#asGroupID').val(groupID);
