@@ -679,7 +679,7 @@ async function postMsg() {
         console.log("ERC20 TIP AMOUNT: ", erc20TipAmount);
         console.log("IN GROUPS: ", inGroups);
 
-        let resp = await contractKUTHULUPub.methods.postMsg(message, hashtags, tags, uri, [commentLevel, commentTo, repostOf, asGroup, erc20TipAmount.toString()], inGroups).send({from: walletAddress})
+        let resp = await contractKUTHULUPub.methods.postMsg(message, hashtags, tags, uri, [commentLevel, commentTo, repostOf, asGroup, erc20TipAmount.toString()], inGroups).send({from: walletAddress, value: tips * ethDec})
             .then(async (result) => {
                 console.log('Post Results: ', result);
 
@@ -1106,7 +1106,7 @@ async function tip(postID){
             tips = parseFloat(tips);
         }
 
-        let resp = await contractTipsPub.methods.addTipFromPost(postID).send({from: walletAddress})
+        let resp = await contractTipsPub.methods.addTipFromPost(postID).send({from: walletAddress, value: tips * ethDec})
             .then(result => {
                 endLoading();
                 // window.location.reload();
