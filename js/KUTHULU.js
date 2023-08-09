@@ -145,6 +145,8 @@ let totalComments = 0;
 let maxMessagesToGet = 25;
 let nameCache = {};
 let postToEarnCap = 0;
+let maxTaggedAccounts = 0;
+let maxHashtags = 0;
 
 let allMessagesPos = 0;
 let lastMessagePos = 0;
@@ -656,14 +658,14 @@ async function postMsg() {
         }
 
 
-        if (hashtags.length > 3){
-            alert('No more than 3 hashtags right now');
+        if (hashtags.length > maxHashtags){
+            alert('No more than ' + maxHashtags + ' hashtags right now');
             endLoading();
             return;
         }
 
-        if (tags.length > 3){
-            alert('No more than 3 tags right now');
+        if (tags.length > maxTaggedAccounts){
+            alert('No more than ' + maxTaggedAccounts + ' tags right now');
             endLoading();
             return;
         }
@@ -3636,6 +3638,24 @@ async function getCosts(){
         })
         .catch(err => {
             catchError('costForNameChange', err);
+        });
+
+    maxHashtags = await contractHashtags.methods.maxHashtags().call()
+        .then(result => {
+            console.log('Max Hashtags: ' + result);
+            return result;
+        })
+        .catch(err => {
+            catchError('maxHashtags', err);
+        });
+
+    maxTaggedAccounts = await contractTagged.methods.maxTaggedAccounts().call()
+        .then(result => {
+            console.log('Max Tagged Accounts: ' + result);
+            return result;
+        })
+        .catch(err => {
+            catchError('maxTaggedAccounts', err);
         });
 
     $('#costTier1').html(costToMintTier1 / ethDec);
