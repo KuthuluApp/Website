@@ -72,8 +72,6 @@ let contractAddressRaffleTix = '0x4D5fec0d054De436258C96ad2De59006078BA5dD';
 let contractAddressSOULS = '0xd8cd041fAD61dCC02B1Fc67a3b1013d4720c7a50';
 let contractAddressRewards = '0xF380e0C317AE3794312C09496D07d88D332861D0';
 let contractAddressSampleContractHook = '0xE4af60AC5E9Fca01f9BDB18Ea8fC7C7E4B7e5f9d';
-let contractAddressBetMetadata = '0xe1eDAA480fa9841e0876e6EC0Cf67Ff61219dAa1';
-let contractAddressBets = '0x4CFF7c8f8bD0bb3722909543A87FF5cfB141A327';
 let contractAddressBetMetadata = '0x82E9062256F6a2989C6A834af015826B1762D8F5';
 let contractAddressBets = '0x4E3c250467626B049a199EaFe383c01d35927abf';
 
