@@ -35,14 +35,10 @@ console.log("https://DOOMLabs.io\n\n\n");
 $(".side-nav").toggleClass("toggled");
 
 const web3 = new Web3(window.ethereum);
-// let web3inf = new Web3('https://polygon-mainnet.infura.io/v3/8c82aaa7f7694749bf2643b11eeeb062');
-// let web3alc = new Web3('https://polygon-mainnet.g.alchemy.com/v2/yQTpMl7h-ezaRrA7B3cnRa4td3tW2QK4');
-// let txScanURLPrefix = 'https://polygonscan.com/';
-// let validNetworkID = 137;
-let web3inf = new Web3('https://polygon-mumbai.infura.io/v3/8c82aaa7f7694749bf2643b11eeeb062');
+let web3inf = new Web3('https://polygon-mainnet.infura.io/v3/8c82aaa7f7694749bf2643b11eeeb062');
 let web3alc = new Web3('https://polygon-mainnet.g.alchemy.com/v2/yQTpMl7h-ezaRrA7B3cnRa4td3tW2QK4');
-let txScanURLPrefix = 'https://mumbai.polygonscan.com/';
-let validNetworkID = 80001;
+let txScanURLPrefix = 'https://polygonscan.com/';
+let validNetworkID = 137;
 let chainIDRaw = web3.utils.toHex(validNetworkID);
 let validChainID = chainIDRaw.toString()
 
