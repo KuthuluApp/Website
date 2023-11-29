@@ -3337,11 +3337,11 @@ async function makePost(p, skipRepost, isComment){
             if (parseFloat(p.tips) > 0) {
                 taggedUsers += '<img src="images/token-MATIC.png" style="position:absolute;right:-5px;top:0;width:16px;height:16px;" />';
             } else if (parseFloat(p.tipAmount) > 0){
-                if (p.tipContract === contractAddressDOOM){
+                if (p.tipContract.toLowerCase() === contractAddressDOOM.toLowerCase()){
                     taggedUsers += '<img src="images/token-DOOM.png" style="position:absolute;right:-5px;top:0;width:16px;height:16px;" />';
-                } else if (p.tipContract === '0xb45F6e99Bc6E4A8Bc431BA86B2E0376271c8545F'){
+                } else if (p.tipContract.toLowerCase() === '0xb45F6e99Bc6E4A8Bc431BA86B2E0376271c8545F'.toLowerCase()){
                     taggedUsers += '<img src="images/token-GBAR.png" style="position:absolute;right:-5px;top:0;width:16px;height:16px;" />';
-                } else if (p.tipContract === '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619'){
+                } else if (p.tipContract.toLowerCase() === '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619'.toLowerCase()){
                     taggedUsers += '<img src="images/token-WETH.png" style="position:absolute;right:-5px;top:0;width:16px;height:16px;" />';
                 } else {
                     taggedUsers += '<img src="images/coin.png" style="position:absolute;right:-5px;top:0;width:16px;height:16px;" />';
@@ -3770,7 +3770,7 @@ function endLoading(){
 }
 
 function addNameToCache(address, name){
-    // COnly add if it's not already there
+    // Only add if it's not already there
     if (!nameCache.hasOwnProperty(address)){
         nameCache[address] = name;
     }
